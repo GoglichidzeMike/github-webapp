@@ -20,19 +20,6 @@ Other regular React scripts like npm test, run build and run eject will also wor
 
 # App is following following guidlines:
 
-https://developer.github.com/v3/
-Frameworks
-— React
-— Vue.js
-— Angular
-or anything else you are familiar with
-Icons
-— Material icons
-— Reflex grid
-or anything else you are familiar with
-Application flow
-Application has two different views:
-Landing page
 URL format: `http://domain`
 — Should load a list view that could be switched to grid view with most popular
 users according to GitHub.
