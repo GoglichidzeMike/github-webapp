@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import PopularUsers from "./components/PopularUsers";
+import SearchBar from "./components/SearchBar";
+import UserInfo from "./components/UserInfo";
+import { FaArrowCircleUp } from "react-icons/fa";
+import { BrowserRouter, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
+  const [showScroll, setShowScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true);
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false);
+    }
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  window.addEventListener("scroll", checkScrollTop);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <BrowserRouter>
+      <div className="App">
+        <div
+          className="app-container"
+          style={{ backgroundImage: "url(/img/frame.png)" }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <FaArrowCircleUp
+            className="scrollTop"
+            onClick={scrollTop}
+            style={{ height: 40, display: showScroll ? "flex" : "none" }}
+          />
+          <SearchBar />
+          <Route exact path="/" component={PopularUsers} />
+          <Route path="/:username" component={UserInfo} />
+          <Footer />
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
