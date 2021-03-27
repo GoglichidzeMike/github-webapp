@@ -15,7 +15,11 @@ function PopularUsers(props) {
   useEffect(() => {
     setLoading(true);
     async function fetchData() {
-      await fetch(MOST_POPULAR)
+      await fetch(MOST_POPULAR, {
+        headers: {
+          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           const items = data.items.map((item) => {

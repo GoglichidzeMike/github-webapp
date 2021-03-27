@@ -10,7 +10,11 @@ export default function Organization(props) {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch(URL)
+      await fetch(URL, {
+        headers: {
+          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           if (data.length > 0) {

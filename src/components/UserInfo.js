@@ -21,7 +21,11 @@ export default function UserInfo(params) {
   useEffect(() => {
     setLoading(true);
     async function getProfile() {
-      await fetch(`https://api.github.com/users/${username}`)
+      await fetch(`https://api.github.com/users/${username}`, {
+        headers: {
+          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           console.log("data " + data.login);

@@ -8,7 +8,11 @@ function RepoList(props) {
   //only get first 3 results and push to repolist.
   useEffect(() => {
     async function fetchData() {
-      await fetch(`https://api.github.com/users/${repoUserName}/repos`)
+      await fetch(`https://api.github.com/users/${repoUserName}/repos`, {
+        headers: {
+          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           let size = 3;
