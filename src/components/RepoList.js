@@ -10,7 +10,7 @@ function RepoList(props) {
     async function fetchData() {
       await fetch(`https://api.github.com/users/${repoUserName}/repos`, {
         headers: {
-          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+          Authorization: process.env.REACT_APP_PERSONAL_ACCESS_TOKEN,
         },
       })
         .then((response) => response.json())

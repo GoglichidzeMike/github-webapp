@@ -23,7 +23,7 @@ export default function UserInfo(params) {
     async function getProfile() {
       await fetch(`https://api.github.com/users/${username}`, {
         headers: {
-          Authorization: process.env.PERSONAL_ACCESS_TOKEN,
+          Authorization: process.env.REACT_APP_PERSONAL_ACCESS_TOKEN,
         },
       })
         .then((response) => response.json())
